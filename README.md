@@ -11,7 +11,7 @@
 
 <br/>
 
-#### 핀테크팀
+#### 페이먼츠 플랫폼팀
 
 <table align="center">
     <th align="center">차윤범</th>
