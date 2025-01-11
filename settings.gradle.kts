@@ -17,6 +17,7 @@ dependencyResolutionManagement {
 
 include(
     "api",
+    "common",
     "account",
     "wallet",
     "payment",
