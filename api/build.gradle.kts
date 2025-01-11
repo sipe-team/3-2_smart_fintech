@@ -7,5 +7,8 @@ tasks.getByName("jar") {
 }
 
 dependencies {
-
+    implementation(project(":wallet"))
+    implementation(project(":payment"))
+    implementation(project(":transfer"))
+    implementation(project(":account"))
 }
