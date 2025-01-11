@@ -18,6 +18,7 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.springframework.boot")
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
     java {
         sourceCompatibility = JavaVersion.VERSION_21
@@ -50,21 +51,23 @@ subprojects {
         useJUnitPlatform()
     }
 
-//    // scripts 경로의 pre-commit hook 등록
-//    tasks.register("addLintPreCommitHook", DefaultTask::class) {
-//        group = "setup"
-//        description = "Install git hooks"
-//        doLast {
-//            val hooksDir = project.file(".git/hooks")
-//            val scriptDir = project.file("scripts")
-//            val preCommit = scriptDir.resolve("pre-commit")
-//            preCommit.copyTo(hooksDir.resolve("pre-commit"), overwrite = true)
-//            hooksDir.resolve("pre-commit").setExecutable(true)
-//        }
-//    }
+    tasks.register("addLintPreCommitHook", DefaultTask::class) {
+        group = "setup"
+        description = "Install git hooks"
+        doLast {
+            val hooksDir = project.rootProject.file(".git/hooks")
+            val scriptDir = project.rootProject.file("scripts")
+            val preCommit = scriptDir.resolve("pre-commit")
+            if (preCommit.exists()) {
+                preCommit.copyTo(hooksDir.resolve("pre-commit"), overwrite = true)
+            } else {
+                println("pre-commit file not found in ${scriptDir.absolutePath}")
+            }
+        }
+    }
 
-//    // compileKotlin가 addGitPreCommitHook에 의존하도록 설정
-//    tasks.named("compileKotlin") {
-//        dependsOn("addLintPreCommitHook")
-//    }
+    // compileKotlin가 addGitPreCommitHook에 의존하도록 설정
+    tasks.named("compileKotlin") {
+        dependsOn("addLintPreCommitHook")
+    }
 }
