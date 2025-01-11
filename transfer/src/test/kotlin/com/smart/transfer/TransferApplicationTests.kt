@@ -1,10 +1,10 @@
-package com.smart.payment.account
+package com.smart.transfer
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class AccountApplicationTests {
+class TransferApplicationTests {
 
 	@Test
 	fun contextLoads() {
