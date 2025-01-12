@@ -1,4 +1,4 @@
-package tech.sipe.fintech.transfer
+package tech.sipe.fintech.transfer.internal
 
 class Transfer(
 	val id: Long,

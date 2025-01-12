@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: fintech
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  datasource:
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 10
+
+server:
+  tomcat:
+    threads:
+      max: 100
+      min-spare: 10
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, modulith
+    health:
+      show-details: always
