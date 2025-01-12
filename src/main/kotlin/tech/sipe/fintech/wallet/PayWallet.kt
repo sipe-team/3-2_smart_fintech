@@ -1,4 +1,7 @@
 package tech.sipe.fintech.wallet
 
-class PayWallet {
+class PayWallet(
+	val id: Long,
+	val balance: Long
+) {
 }
