@@ -1,13 +1,14 @@
 plugins {
     kotlin("jvm") version "2.1.0"
     kotlin("plugin.spring") version "2.1.0"
+    kotlin("plugin.jpa") version "2.1.0"
     id("org.springframework.boot") version "3.4.1"
     id("io.spring.dependency-management") version "1.1.7"
     id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
 }
 
-group = "tech.sipe"
-version = "0.0.1-SNAPSHOT"
+version = "${property("applicationVersion")}"
+group = "${property("projectGroup")}"
 
 java {
     toolchain {
@@ -22,30 +23,45 @@ repositories {
     mavenCentral()
 }
 
-extra["springModulithVersion"] = "1.3.1"
-
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+    // spring
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
 //    implementation("org.springframework.kafka:spring-kafka")
+
+    // spring-modulith
     implementation("org.springframework.modulith:spring-modulith-events-api")
     implementation("org.springframework.modulith:spring-modulith-starter-core")
     implementation("org.springframework.modulith:spring-modulith-starter-jdbc")
     implementation("org.springframework.modulith:spring-modulith-test")
 
-    runtimeOnly("org.postgresql:postgresql")
     runtimeOnly("org.springframework.modulith:spring-modulith-actuator")
     runtimeOnly("org.springframework.modulith:spring-modulith-events-kafka")
     runtimeOnly("org.springframework.modulith:spring-modulith-observability")
+    runtimeOnly("org.springframework.modulith:spring-modulith-runtime")
+
+    // libraries
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+    // dotenv
+    implementation("io.github.cdimascio:java-dotenv:5.2.2")
+
+    // db
+    runtimeOnly("org.postgresql:postgresql")
+    runtimeOnly("com.h2database:h2")
+
+    // test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 //    testImplementation("org.springframework.kafka:spring-kafka-test")
 //    testImplementation("org.springframework.modulith:spring-modulith-starter")
-
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    // api docs
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:${property("swaggerVersion")}")
 }
 
 dependencyManagement {
