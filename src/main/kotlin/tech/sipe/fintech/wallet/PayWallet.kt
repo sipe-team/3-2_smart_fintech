@@ -1,4 +1,4 @@
 package tech.sipe.fintech.wallet
 
-class Wallet {
+class PayWallet {
 }
