@@ -15,6 +15,9 @@ java {
     }
 }
 
+extra["springModulithVersion"] = "1.3.1"
+
+
 repositories {
     mavenCentral()
 }
@@ -41,6 +44,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 //    testImplementation("org.springframework.kafka:spring-kafka-test")
 //    testImplementation("org.springframework.modulith:spring-modulith-starter")
+
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
