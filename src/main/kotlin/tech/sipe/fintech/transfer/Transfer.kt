@@ -1,4 +1,7 @@
 package tech.sipe.fintech.transfer
 
-class Transfer {
+class Transfer(
+	val id: Long,
+	val money: Long
+) {
 }
