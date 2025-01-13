@@ -10,10 +10,12 @@ class PayWallet(
 	balance: BigDecimal,
 	val currency: Currency,
 ) {
+	companion object {
+		private const val MINIMUM_CHARGE_AMOUNT = 1000
+	}
+
 	var balance: BigDecimal = balance
 		private set
-
-	private val MINIMUM_CHARGE_AMOUNT = 1000
 
 	/**
 	 * 충전
@@ -22,7 +24,7 @@ class PayWallet(
 		if (amount < MINIMUM_CHARGE_AMOUNT) {
 			throw IllegalArgumentException("최소 충전 금액은 1,000원입니다.")
 		}
-		 balance += BigDecimal.valueOf(amount)
+		balance += BigDecimal.valueOf(amount)
 	}
 
 	/**

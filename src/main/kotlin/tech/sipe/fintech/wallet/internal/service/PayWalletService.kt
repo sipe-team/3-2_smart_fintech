@@ -7,10 +7,13 @@ import tech.sipe.fintech.wallet.internal.domain.PayWalletRepository
 
 @Service
 class PayWalletService(
-	private val payWalletRepository: PayWalletRepository
+	private val payWalletRepository: PayWalletRepository,
 ) {
 	@Transactional
-	fun charge(amount: Long, userId: Long) {
+	fun charge(
+		amount: Long,
+		userId: Long,
+	) {
 		/**
 		 * 1. 지갑 조회
 		 * 2. amount 만큼 충전
@@ -22,7 +25,10 @@ class PayWalletService(
 	}
 
 	@Transactional
-	fun pay(amount: Long, payWalletId: Long) {
+	fun pay(
+		amount: Long,
+		payWalletId: Long,
+	) {
 		/**
 		 * 1. 지갑 조회
 		 * 2. amount 만큼 차감
@@ -37,5 +43,4 @@ class PayWalletService(
 		 */
 		return 0
 	}
-
 }

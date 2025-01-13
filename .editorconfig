@@ -28,3 +28,5 @@ max_line_length = 120
 ktlint_no-wildcard-imports = disabled
 ktlint_standard_no-wildcard-imports = disabled
 ktlint_standard_package-name = disabled
+
+ktlint_function_naming_ignore_when_annotated_with = Composable

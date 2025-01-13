@@ -8,8 +8,10 @@ fun Any.logInfo(message: String) {
 	logger.info(message)
 }
 
-fun Any.logError(message: String? = null, e: Exception) {
+fun Any.logError(
+	message: String? = null,
+	e: Exception,
+) {
 	val logger = org.slf4j.LoggerFactory.getLogger(this.javaClass)
 	logger.error(message ?: e.message ?: e.localizedMessage, e)
 }
-

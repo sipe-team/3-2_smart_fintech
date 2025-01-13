@@ -4,7 +4,11 @@ plugins {
     kotlin("plugin.jpa") version "2.1.0"
     id("org.springframework.boot") version "3.4.1"
     id("io.spring.dependency-management") version "1.1.7"
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.2"
+}
+
+ktlint {
+    version.set("1.5.0")
 }
 
 version = "${property("applicationVersion")}"
@@ -17,7 +21,6 @@ java {
 }
 
 extra["springModulithVersion"] = "1.3.1"
-
 
 repositories {
     mavenCentral()
@@ -70,7 +73,6 @@ dependencyManagement {
     }
 }
 
-
 kotlin {
     compilerOptions {
         freeCompilerArgs.addAll("-Xjsr305=strict")
@@ -85,8 +87,10 @@ tasks.register("addLintPreCommitHook", DefaultTask::class) {
         val hooksDir = project.file(".git/hooks")
         val scriptDir = project.file("scripts")
         val preCommit = scriptDir.resolve("pre-commit")
+        Runtime.getRuntime().exec("chmod +x .git/hooks/pre-commit")
         preCommit.copyTo(hooksDir.resolve("pre-commit"), overwrite = true)
         hooksDir.resolve("pre-commit").setExecutable(true)
+        // chmod +x .git/hooks/pre-commit
     }
 }
 

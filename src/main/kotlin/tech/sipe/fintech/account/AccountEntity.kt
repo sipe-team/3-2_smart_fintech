@@ -1,4 +1,3 @@
 package tech.sipe.fintech.account
 
-class AccountEntity {
-}
+class AccountEntity

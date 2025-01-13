@@ -6,5 +6,5 @@ package tech.sipe.fintech.wallet.internal.domain
 enum class WalletStatus {
 	ACTIVE,
 	INACTIVE,
-	SUSPENDED
+	SUSPENDED,
 }

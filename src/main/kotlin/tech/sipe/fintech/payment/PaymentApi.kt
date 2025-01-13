@@ -6,12 +6,9 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class PaymentApi {
-
 	@PostMapping("/payments")
 	fun pay(
-		@RequestParam memberId: Long
+		@RequestParam memberId: Long,
 	) {
-
 	}
-
 }

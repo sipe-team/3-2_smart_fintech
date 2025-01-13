@@ -7,16 +7,14 @@ import tech.sipe.fintech.wallet.internal.domain.PayWalletRepository
 
 @Component
 class PayWalletRepositoryImpl(
-	private val payWalletJpaRepository: PayWalletJpaRepository
+	private val payWalletJpaRepository: PayWalletJpaRepository,
 ) : PayWalletRepository {
-
 	override fun findByUserId(userId: Long): PayWallet {
 		payWalletJpaRepository.findByUserId(userId)?.let {
 			return PayWalletMapper.toDomain(it)
 		} ?: throw RuntimeException("PayWallet not found")
 	}
 
-	override fun save(payWalletEntity: PayWallet): PayWallet {
-		return PayWalletMapper.toDomain(payWalletJpaRepository.save(PayWalletMapper.toEntity(payWalletEntity)))
-	}
+	override fun save(payWalletEntity: PayWallet): PayWallet =
+		PayWalletMapper.toDomain(payWalletJpaRepository.save(PayWalletMapper.toEntity(payWalletEntity)))
 }
