@@ -10,7 +10,7 @@ class FintechApplicationTests {
 
 	@Test
 	fun contextLoads() {
-		println("modules: ${modules}")
+		println("modules: $modules")
 
 		modules.verify()
 	}

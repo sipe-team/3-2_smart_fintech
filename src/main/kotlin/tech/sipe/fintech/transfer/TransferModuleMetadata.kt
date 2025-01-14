@@ -3,7 +3,6 @@ package tech.sipe.fintech.transfer
 import org.springframework.modulith.ApplicationModule
 
 @ApplicationModule(
-	allowedDependencies = ["wallet"]
+	allowedDependencies = ["wallet"],
 )
-class TransferModuleMetadata {
-}
+class TransferModuleMetadata

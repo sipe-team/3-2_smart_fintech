@@ -8,12 +8,11 @@ import tech.sipe.fintech.wallet.PayWalletApi
 @RestController
 class TransferApi(
 	private val transferService: TransferService,
-	private val payWalletApi: PayWalletApi
+	private val payWalletApi: PayWalletApi,
 ) {
-
 	@PostMapping("/transfers/charge")
 	fun charge(
-		@RequestParam memberId: Long
+		@RequestParam memberId: Long,
 	) {
 		val balance = payWalletApi.getBalance(123)
 		transferService.charge()
@@ -21,14 +20,13 @@ class TransferApi(
 
 	@PostMapping("/transfers/withdrawal")
 	fun withdraw(
-		@RequestParam memberId: Long
+		@RequestParam memberId: Long,
 	) {}
 
 	@PostMapping("/transfers")
 	fun transfer(
-		@RequestParam memberId: Long
+		@RequestParam memberId: Long,
 	) {
 		transferService.transfer()
 	}
-
 }

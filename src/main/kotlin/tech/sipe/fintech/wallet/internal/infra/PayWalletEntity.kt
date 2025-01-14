@@ -19,4 +19,4 @@ class PayWalletEntity(
 	val balance: BigDecimal = BigDecimal.ZERO,
 	@Enumerated(value = EnumType.STRING)
 	val currency: Currency,
-): BaseEntity()
+) : BaseEntity()
