@@ -4,8 +4,8 @@
 
 ### 주제
 
-- **Modular Monolithic** 아키텍처를 이해하고 **Spring Modulith**를 적용하여 실제로 설계 및 구현한다.
-- 핀테크팀은 Payment 도메인을 기반으로 주어진 요구사항을 분석하여 Spring Modulith 기반으로 구현한다.
+- `Modular Monolithic` 아키텍처의 원리를 이해하고 이를 효과적으로 활용하기 위해 `Spring Modulith`를 중심으로 설계 및 구현한다.
+- Payment 도메인을 예제로 사용하여 **`Spring Modulith`** 의 주요 기능과 모듈 설계를 심화 학습하고, 이를 기반으로 실제 애플리케이션을 구현한다.
 
 ---
 
