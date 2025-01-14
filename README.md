@@ -5,6 +5,7 @@
 ### 주제
 
 - **Modular Monolithic** 아키텍처를 이해하고 **Spring Modulith**를 적용하여 실제로 설계 및 구현한다.
+- 핀테크팀은 Payment 도메인을 기반으로 주어진 요구사항을 분석하여 Spring Modulith 기반으로 구현한다.
 
 ---
 
@@ -113,7 +114,7 @@
 
 ---
 
-### 이후 계획
+### 심화 활동: 선택적으로 참여하기
 
 #### 모니터링 및 장애 내결함성 테스트
 
@@ -132,11 +133,12 @@
 
 #### Branch 이름 규칙
 
-- 기능 단위로 Branch 생성
-    - **신규 기능 개발**: `feature/{github-name}-{title}`
-    - **기존 기능 개선**: `refactor/{github-name}-{title}`
-    - **버그 수정 (develop)**: `fix/{github-name}-{title}`
-    - **버그 수정 (main)**: `hotfix/{github-name}-{title}`
+- 주차별 단위로 Branch 생성
+    - **1주차**: `week1/{github-name}-{title}`
+    - **2주차**: `week2/{github-name}-{title}`
+    - **3주차**: `week3/{github-name}-{title}`
+    - **4주차**: `week4/{github-name}-{title}`
+    - **5주차**: `week4/{github-name}-{title}`
     - **문서 추가/수정**: `docs/{github-name}-{title}`
 
 #### Git Branch 전략
