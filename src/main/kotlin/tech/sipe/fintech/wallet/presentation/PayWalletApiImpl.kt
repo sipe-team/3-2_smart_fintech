@@ -1,8 +1,9 @@
-package tech.sipe.fintech.wallet.internal.presentation
+package tech.sipe.fintech.wallet.presentation
 
 import org.springframework.stereotype.Service
 import tech.sipe.fintech.wallet.PayWalletApi
-import tech.sipe.fintech.wallet.internal.service.PayWalletService
+import tech.sipe.fintech.wallet.service.PayWalletService
+import java.math.BigDecimal
 
 /**
  * @author 김재영 (jaeyeong.kim@navercorp.com)
@@ -15,17 +16,15 @@ class PayWalletApiImpl(
 		amount: Long,
 		payWalletId: Long,
 	) {
-		TODO("Not yet implemented")
+		payWalletService.charge(amount, payWalletId)
 	}
 
 	override fun pay(
 		amount: Long,
 		payWalletId: Long,
 	) {
-		TODO("Not yet implemented")
+		payWalletService.pay(amount, payWalletId)
 	}
 
-	override fun getBalance(payWalletId: Long): Long {
-		TODO("Not yet implemented")
-	}
+	override fun getBalance(payWalletId: Long): BigDecimal = payWalletService.getBalance(payWalletId)
 }

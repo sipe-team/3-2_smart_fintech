@@ -1,4 +1,4 @@
-package tech.sipe.fintech.wallet.internal.domain
+package tech.sipe.fintech.wallet.domain
 
 import java.math.BigDecimal
 

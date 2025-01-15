@@ -1,5 +1,7 @@
 package tech.sipe.fintech.wallet
 
+import java.math.BigDecimal
+
 /**
  * @author 김재영 (jaeyeong.kim@navercorp.com)
  */
@@ -14,5 +16,5 @@ interface PayWalletApi {
 		payWalletId: Long,
 	)
 
-	fun getBalance(payWalletId: Long): Long
+	fun getBalance(payWalletId: Long): BigDecimal
 }
