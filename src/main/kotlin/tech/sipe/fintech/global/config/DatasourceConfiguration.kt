@@ -1,4 +1,4 @@
-package tech.sipe.fintech.config
+package tech.sipe.fintech.global.config
 
 import io.github.cdimascio.dotenv.Dotenv
 import org.springframework.context.annotation.Bean
