@@ -1,5 +1,6 @@
 package tech.sipe.fintech.wallet.internal.domain
 
+import tech.sipe.fintech.common.Currency
 import java.math.BigDecimal
 
 class PayWallet(
