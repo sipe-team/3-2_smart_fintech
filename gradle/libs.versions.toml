@@ -1,7 +1,7 @@
 [versions]
 kotlin = "1.9.23"
 ktlint = "12.1.2"
-ktlint_version_set ="1.5.0"
+ktlint_version_set = "1.5.0"
 spring_boot = "3.4.1"
 spring_dependency_management = "1.1.7"
 swaggerVersion = "2.7.0"
@@ -19,40 +19,40 @@ ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 
 [libraries]
 # Kotlin Libraries
-kotlin_reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
-kotlin_test_junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5", version.ref = "kotlin" }
+kotlin_reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
+kotlin_test_junit5 = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit5", version.ref = "kotlin" }
 
 # Spring Libraries
-spring_boot_starter_web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "spring_boot" }
-spring_boot_starter_data_jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "spring_boot" }
-spring_boot_starter_data_jdbc = { module = "org.springframework.boot:spring-boot-starter-data-jdbc", version.ref = "spring_boot" }
-spring_boot_starter_actuator = { module = "org.springframework.boot:spring-boot-starter-actuator", version.ref = "spring_boot" }
-spring_boot_starter_test = { module = "org.springframework.boot:spring-boot-starter-test" }
-spring_doc_openapi_starter_webmvc_ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "swaggerVersion" }
+spring_boot_starter_web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "spring_boot" }
+spring_boot_starter_data_jpa = { group = "org.springframework.boot", name = "spring-boot-starter-data-jpa", version.ref = "spring_boot" }
+spring_boot_starter_data_jdbc = { group = "org.springframework.boot", name = "spring-boot-starter-data-jdbc", version.ref = "spring_boot" }
+spring_boot_starter_actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator", version.ref = "spring_boot" }
+spring_boot_starter_test = { group = "org.springframework.boot", name = "spring-boot-starter-test" }
+spring_doc_openapi_starter_webmvc_ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version.ref = "swaggerVersion" }
 
 # Spring Modulith Libraries
-spring_modulith_events_api = { module = "org.springframework.modulith:spring-modulith-events-api", version.ref = "spring_modulith" }
-spring_modulith_starter_core = { module = "org.springframework.modulith:spring-modulith-starter-core", version.ref = "spring_modulith" }
-spring_modulith_starter_jdbc = { module = "org.springframework.modulith:spring-modulith-starter-jdbc", version.ref = "spring_modulith" }
-spring_modulith_test = { module = "org.springframework.modulith:spring-modulith-test", version.ref = "spring_modulith" }
-spring_modulith_actuator = { module = "org.springframework.modulith:spring-modulith-actuator", version.ref = "spring_modulith" }
-spring_modulith_events_kafka = { module = "org.springframework.modulith:spring-modulith-events-kafka", version.ref = "spring_modulith" }
-spring_modulith_observability = { module = "org.springframework.modulith:spring-modulith-observability", version.ref = "spring_modulith" }
-spring_modulith_runtime = { module = "org.springframework.modulith:spring-modulith-runtime", version.ref = "spring_modulith" }
-spring_modulith_bom = { module = "org.springframework.modulith:spring-modulith-bom", version.ref = "spring_modulith" }
+spring_modulith_events_api = { group = "org.springframework.modulith", name = "spring-modulith-events-api", version.ref = "spring_modulith" }
+spring_modulith_starter_core = { group = "org.springframework.modulith", name = "spring-modulith-starter-core", version.ref = "spring_modulith" }
+spring_modulith_starter_jdbc = { group = "org.springframework.modulith", name = "spring-modulith-starter-jdbc", version.ref = "spring_modulith" }
+spring_modulith_test = { group = "org.springframework.modulith", name = "spring-modulith-test", version.ref = "spring_modulith" }
+spring_modulith_actuator = { group = "org.springframework.modulith", name = "spring-modulith-actuator", version.ref = "spring_modulith" }
+spring_modulith_events_kafka = { group = "org.springframework.modulith", name = "spring-modulith-events-kafka", version.ref = "spring_modulith" }
+spring_modulith_observability = { group = "org.springframework.modulith", name = "spring-modulith-observability", version.ref = "spring_modulith" }
+spring_modulith_runtime = { group = "org.springframework.modulith", name = "spring-modulith-runtime", version.ref = "spring_modulith" }
+spring_modulith_bom = { group = "org.springframework.modulith", name = "spring-modulith-bom", version.ref = "spring_modulith" }
 
 # dotenv
-java_dotenv = { module = "io.github.cdimascio:java-dotenv", version.ref = "java_dotenv" }
+java_dotenv = { group = "io.github.cdimascio", name = "java-dotenv", version.ref = "java_dotenv" }
 
 # Jackson
-jackson_kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin" }
+jackson_kotlin = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin" }
 
 # Database Libraries
-h2 = { module = "com.h2database:h2" }
-postgresql = { module = "org.postgresql:postgresql" }
+h2 = { group = "com.h2database", name = "h2" }
+postgresql = { group = "org.postgresql", name = "postgresql" }
 
 # Testing Libraries
-junit_platform = { module = "org.junit.platform:junit-platform-launcher" }
+junit_platform = { group = "org.junit.platform", name = "junit-platform-launcher" }
 
 [bundles]
 spring_modulith = [
