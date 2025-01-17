@@ -13,7 +13,7 @@ ktlint {
 }
 
 version = project.findProperty("applicationVersion")?.toString() ?: "0.0.1-SNAPSHOT"
-group = project.findProperty("projectGroup")?.toString() ?: "com.example"
+group = project.findProperty("projectGroup")?.toString() ?: "team.sipe"
 
 java {
     toolchain {

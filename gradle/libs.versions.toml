@@ -1,5 +1,5 @@
 [versions]
-kotlin = "1.9.23"
+kotlin = "2.1.0"
 ktlint = "12.1.2"
 ktlint_version_set = "1.5.0"
 spring_boot = "3.4.1"
