@@ -1,18 +1,19 @@
 plugins {
-    kotlin("jvm") version "2.1.0"
-    kotlin("plugin.spring") version "2.1.0"
-    kotlin("plugin.jpa") version "2.1.0"
-    id("org.springframework.boot") version "3.4.1"
-    id("io.spring.dependency-management") version "1.1.7"
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.2"
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlin.spring)
+    alias(libs.plugins.kotlin.jpa)
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dependency.management)
+    alias(libs.plugins.ktlint)
 }
 
 ktlint {
-    version.set("1.5.0")
+    version.set(libs.versions.ktlint.version.set)
 }
 
-version = "${property("applicationVersion")}"
-group = "${property("projectGroup")}"
+version = project.findProperty("applicationVersion")?.toString() ?: "0.0.1-SNAPSHOT"
+group = project.findProperty("projectGroup")?.toString() ?: "com.example"
 
 java {
     toolchain {
@@ -20,56 +21,47 @@ java {
     }
 }
 
-extra["springModulithVersion"] = "1.3.1"
-
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    // spring
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-//    implementation("org.springframework.kafka:spring-kafka")
+    // Spring
+    implementation(libs.spring.boot.starter.web)
+    implementation(libs.spring.boot.starter.data.jpa)
+    implementation(libs.spring.boot.starter.data.jdbc)
+    implementation(libs.spring.boot.starter.actuator)
 
-    // spring-modulith
-    implementation("org.springframework.modulith:spring-modulith-events-api")
-    implementation("org.springframework.modulith:spring-modulith-starter-core")
-    implementation("org.springframework.modulith:spring-modulith-starter-jdbc")
-    implementation("org.springframework.modulith:spring-modulith-test")
+    // Spring Modulith (bundle 사용)
+    implementation(libs.bundles.spring.modulith)
+    runtimeOnly(libs.bundles.spring.modulith.runtime)
 
-    runtimeOnly("org.springframework.modulith:spring-modulith-actuator")
-    runtimeOnly("org.springframework.modulith:spring-modulith-events-kafka")
-    runtimeOnly("org.springframework.modulith:spring-modulith-observability")
-    runtimeOnly("org.springframework.modulith:spring-modulith-runtime")
+    // Libraries
+    implementation(libs.jackson.kotlin)
+    implementation(libs.kotlin.reflect)
 
-    // libraries
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation(libs.java.dotenv)
 
-    // dotenv
-    implementation("io.github.cdimascio:java-dotenv:5.2.2")
+    // Database
+    runtimeOnly(libs.postgresql)
+    runtimeOnly(libs.h2)
 
-    // db
-    runtimeOnly("org.postgresql:postgresql")
-    runtimeOnly("com.h2database:h2")
+    // Test
+    testImplementation(libs.spring.boot.starter.test)
+    testImplementation(libs.kotlin.test.junit5)
+    testRuntimeOnly(libs.junit.platform)
 
-    // test
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-//    testImplementation("org.springframework.kafka:spring-kafka-test")
-//    testImplementation("org.springframework.modulith:spring-modulith-starter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-
-    // api docs
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:${property("swaggerVersion")}")
+    // API Docs
+    implementation(libs.spring.doc.openapi.starter.webmvc.ui)
 }
 
 dependencyManagement {
     imports {
-        mavenBom("org.springframework.modulith:spring-modulith-bom:${property("springModulithVersion")}")
+        mavenBom(
+            libs.spring.modulith.bom
+                .get()
+                .toString(),
+        )
     }
 }
 
@@ -79,7 +71,6 @@ kotlin {
     }
 }
 
-// scripts 경로의 pre-commit hook 등록
 tasks.register("addLintPreCommitHook", DefaultTask::class) {
     group = "setup"
     description = "Install git hooks"
@@ -90,11 +81,9 @@ tasks.register("addLintPreCommitHook", DefaultTask::class) {
         Runtime.getRuntime().exec("chmod +x .git/hooks/pre-commit")
         preCommit.copyTo(hooksDir.resolve("pre-commit"), overwrite = true)
         hooksDir.resolve("pre-commit").setExecutable(true)
-        // chmod +x .git/hooks/pre-commit
     }
 }
 
-// compileKotlin가 addGitPreCommitHook에 의존하도록 설정
 tasks.named("compileKotlin") {
     dependsOn("addLintPreCommitHook")
 }
