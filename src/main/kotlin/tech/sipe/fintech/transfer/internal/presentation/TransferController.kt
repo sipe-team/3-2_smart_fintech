@@ -1,27 +1,27 @@
-package tech.sipe.fintech.transfer.internal
+package tech.sipe.fintech.transfer.internal.presentation
 
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
-import tech.sipe.fintech.wallet.PayWalletApi
+import tech.sipe.fintech.transfer.internal.service.TransferService
 
 @RestController
-class TransferApi(
+class TransferController(
 	private val transferService: TransferService,
-	private val payWalletApi: PayWalletApi,
 ) {
 	@PostMapping("/transfers/charge")
 	fun charge(
 		@RequestParam memberId: Long,
 	) {
-		val balance = payWalletApi.getBalance(123)
 		transferService.charge()
 	}
 
-	@PostMapping("/transfers/withdrawal")
+	@PostMapping("/transfers/withdraw")
 	fun withdraw(
 		@RequestParam memberId: Long,
-	) {}
+	) {
+		transferService.withdraw()
+	}
 
 	@PostMapping("/transfers")
 	fun transfer(

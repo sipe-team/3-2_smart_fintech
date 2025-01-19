@@ -27,7 +27,7 @@ class PayWalletService(
 	@Transactional
 	fun pay(
 		amount: Long,
-		payWalletId: Long,
+		userId: Long,
 	) {
 		/**
 		 * 1. 지갑 조회
@@ -36,7 +36,7 @@ class PayWalletService(
 		 */
 	}
 
-	fun getBalance(payWalletId: Long): Long {
+	fun getBalance(userId: Long): Long {
 		/**
 		 * 1. 지갑 조회
 		 * 2. 잔액 반환
