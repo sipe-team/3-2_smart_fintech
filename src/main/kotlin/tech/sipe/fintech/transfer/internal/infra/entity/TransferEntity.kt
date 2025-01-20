@@ -7,6 +7,7 @@ import jakarta.persistence.Table
 import tech.sipe.fintech.common.BaseEntity
 import tech.sipe.fintech.common.Currency
 import tech.sipe.fintech.transfer.internal.domain.TransferStatus
+import tech.sipe.fintech.transfer.internal.domain.TransferType
 import java.math.BigDecimal
 
 @Entity
@@ -21,6 +22,9 @@ class TransferEntity(
 	val amount: BigDecimal? = BigDecimal.ZERO,
 	// 송금 화폐
 	val currency: Currency,
+	// 송금 유형
+	@Enumerated(value = EnumType.STRING)
+	val transferType: TransferType,
 	// 송금 상태
 	@Enumerated(value = EnumType.STRING)
 	val status: TransferStatus = TransferStatus.REQUESTED,

@@ -8,6 +8,7 @@ data class Transfer(
 	val destinationId: Long,
 	val amount: Long,
 	val currency: Currency,
+	val transferType: TransferType,
 	val status: TransferStatus,
 	val message: String? = null,
 )
