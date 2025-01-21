@@ -1,24 +1,21 @@
 package tech.sipe.fintech.account
 
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import java.math.BigDecimal
 
-@RestController
-class AccountApi(
-	private val accountService: AccountService,
-) {
-	@PostMapping("/accounts/registration")
-	fun register(
-		@RequestParam memberId: Long,
-	) {
-		accountService.register()
-	}
+interface AccountApi {
+	fun link(payWalletId: Long)
 
-	@PostMapping("/accounts/cancellation")
-	fun cancel(
-		@RequestParam memberId: Long,
-	) {
-		accountService.cancel()
-	}
+	fun unlink(accountId: Long)
+
+	fun getBalance(accountId: Long): BigDecimal
+
+	fun deposit(
+		accountId: Long,
+		amount: Long,
+	)
+
+	fun withdraw(
+		accountId: Long,
+		amount: Long,
+	)
 }
