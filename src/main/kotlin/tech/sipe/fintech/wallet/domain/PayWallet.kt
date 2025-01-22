@@ -2,8 +2,8 @@ package tech.sipe.fintech.wallet.domain
 
 import java.math.BigDecimal
 
-class PayWallet private constructor(
-	val id: Long?,
+class PayWallet(
+	val id: Long,
 	val userId: Long,
 	val accountId: Long?,
 	val walletStatus: WalletStatus,
@@ -15,7 +15,7 @@ class PayWallet private constructor(
 
 		fun create(userId: Long): PayWallet =
 			PayWallet(
-				id = null,
+				id = 0L,
 				userId = userId,
 				accountId = null,
 				walletStatus = WalletStatus.INACTIVE,

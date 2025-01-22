@@ -13,7 +13,7 @@ import java.math.BigDecimal
 @Table(name = "pay_wallet")
 class PayWalletEntity(
 	val userId: Long,
-	val accountId: Long,
+	val accountId: Long?,
 	@Enumerated(value = EnumType.STRING)
 	val walletStatus: WalletStatus,
 	val balance: BigDecimal,
