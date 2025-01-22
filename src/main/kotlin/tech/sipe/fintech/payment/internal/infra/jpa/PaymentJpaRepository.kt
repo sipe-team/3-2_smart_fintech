@@ -1,3 +1,6 @@
 package tech.sipe.fintech.payment.internal.infra.jpa
 
-interface PaymentJpaRepository
+import org.springframework.data.jpa.repository.JpaRepository
+import tech.sipe.fintech.payment.internal.infra.entity.PaymentEntity
+
+interface PaymentJpaRepository : JpaRepository<PaymentEntity, Long>

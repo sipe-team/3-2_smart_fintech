@@ -1,3 +1,5 @@
 package tech.sipe.fintech.payment.internal.domain
 
-interface PaymentRepository
+interface PaymentRepository {
+	fun save(payment: Payment): Payment
+}
