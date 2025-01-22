@@ -5,7 +5,7 @@ import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
 import jakarta.persistence.Table
 import tech.sipe.fintech.common.BaseEntity
-import tech.sipe.fintech.wallet.domain.Currency
+import tech.sipe.fintech.common.Currency
 import tech.sipe.fintech.wallet.domain.WalletStatus
 import java.math.BigDecimal
 
