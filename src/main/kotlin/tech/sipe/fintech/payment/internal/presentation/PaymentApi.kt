@@ -1,4 +1,4 @@
-package tech.sipe.fintech.payment
+package tech.sipe.fintech.payment.internal.presentation
 
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
