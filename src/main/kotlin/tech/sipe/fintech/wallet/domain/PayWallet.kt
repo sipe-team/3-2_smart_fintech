@@ -2,16 +2,26 @@ package tech.sipe.fintech.wallet.domain
 
 import java.math.BigDecimal
 
-class PayWallet(
-	val id: Long,
+class PayWallet private constructor(
+	val id: Long?,
 	val userId: Long,
-	val accountId: Long,
+	val accountId: Long?,
 	val walletStatus: WalletStatus,
 	balance: BigDecimal,
 	val currency: Currency,
 ) {
 	companion object {
 		private const val MINIMUM_CHARGE_AMOUNT = 1000
+
+		fun create(userId: Long): PayWallet =
+			PayWallet(
+				id = null,
+				userId = userId,
+				accountId = null,
+				walletStatus = WalletStatus.INACTIVE,
+				balance = BigDecimal.ZERO,
+				currency = Currency.KRW,
+			)
 	}
 
 	var balance: BigDecimal = balance

@@ -4,12 +4,23 @@ import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 import tech.sipe.fintech.wallet.domain.PayWallet
 import tech.sipe.fintech.wallet.domain.PayWalletRepository
+import tech.sipe.fintech.wallet.presentation.CreateWalletRequest
 import java.math.BigDecimal
 
 @Service
 class PayWalletService(
 	private val payWalletRepository: PayWalletRepository,
 ) {
+	@Transactional
+	fun create(createWalletRequest: CreateWalletRequest) {
+		/**
+		 * 1. 지갑 생성
+		 * 2. 지갑 저장
+		 */
+		val payWallet: PayWallet = PayWallet.create(createWalletRequest.userId)
+		payWalletRepository.save(payWallet)
+	}
+
 	@Transactional
 	fun charge(
 		amount: Long,

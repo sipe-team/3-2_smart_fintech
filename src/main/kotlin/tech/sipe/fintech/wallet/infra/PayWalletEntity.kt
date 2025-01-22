@@ -16,7 +16,7 @@ class PayWalletEntity(
 	val accountId: Long,
 	@Enumerated(value = EnumType.STRING)
 	val walletStatus: WalletStatus,
-	val balance: BigDecimal = BigDecimal.ZERO,
+	val balance: BigDecimal,
 	@Enumerated(value = EnumType.STRING)
 	val currency: Currency,
 ) : BaseEntity()
