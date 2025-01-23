@@ -1,4 +1,4 @@
-package tech.sipe.fintech.wallet.infra
+package tech.sipe.fintech.wallet.internal.infra
 
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
@@ -16,7 +16,7 @@ class PayWalletEntity(
 	val accountId: Long?,
 	@Enumerated(value = EnumType.STRING)
 	val walletStatus: WalletStatus,
-	val balance: BigDecimal,
+	val balance: BigDecimal = BigDecimal.ZERO,
 	@Enumerated(value = EnumType.STRING)
 	val currency: Currency,
 ) : BaseEntity()
