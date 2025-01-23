@@ -1,6 +1,9 @@
 package tech.sipe.fintech.payment.internal.service
 
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
+import tech.sipe.fintech.global.error.CustomException
+import tech.sipe.fintech.global.error.ErrorCode
 import tech.sipe.fintech.payment.internal.domain.Payment
 import tech.sipe.fintech.payment.internal.domain.PaymentRepository
 import tech.sipe.fintech.payment.internal.domain.PaymentStatus
@@ -12,11 +15,12 @@ class PaymentService(
 	private val paymentRepository: PaymentRepository,
 	private val walletServiceClient: WalletServiceClient, // 해당 클래스가 있다고 가정
 ) {
+	@Transactional
 	fun processPayment(paymentRequest: PaymentRequest): PaymentResponse {
 		// 1. 지갑 잔액 조회
 		val walletBalance = walletServiceClient.getWalletBalance(paymentRequest.paymentRequestUserId)
 		if (walletBalance < paymentRequest.money) {
-			throw IllegalArgumentException("wallet balance is empty")
+			throw CustomException(ErrorCode.WALLET_BALANCE_IS_EMPTY)
 		}
 
 		// 2. 지갑 잔액 차감

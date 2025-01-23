@@ -12,4 +12,7 @@ enum class ErrorCode(
 	METHOD_ARGUMENT_TYPE_MISMATCH(HttpStatus.BAD_REQUEST, "요청 한 값 타입이 잘못되어 binding에 실패하였습니다."),
 	METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED, "지원하지 않는 HTTP method 입니다."),
 	INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버 오류, 관리자에게 문의하세요"),
+
+	// Payment
+	WALLET_BALANCE_IS_EMPTY(HttpStatus.BAD_REQUEST, "지갑에 있는 잔액이 비어있습니다."),
 }
