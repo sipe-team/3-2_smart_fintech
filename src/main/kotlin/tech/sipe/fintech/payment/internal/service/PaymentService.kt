@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import tech.sipe.fintech.global.error.CustomException
 import tech.sipe.fintech.global.error.ErrorCode
+import tech.sipe.fintech.payment.WalletServiceClient
 import tech.sipe.fintech.payment.internal.domain.Payment
 import tech.sipe.fintech.payment.internal.domain.PaymentRepository
 import tech.sipe.fintech.payment.internal.domain.PaymentStatus
@@ -19,7 +20,7 @@ class PaymentService(
 	fun processPayment(paymentRequest: PaymentRequest): PaymentResponse {
 		// 1. 지갑 잔액 조회
 		val walletBalance = walletServiceClient.getWalletBalance(paymentRequest.paymentRequestUserId)
-		if (walletBalance < paymentRequest.money) {
+		if (walletBalance < paymentRequest.money.toLong()) {
 			throw CustomException(ErrorCode.WALLET_BALANCE_IS_EMPTY)
 		}
 
