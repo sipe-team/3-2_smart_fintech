@@ -4,8 +4,8 @@ import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 import tech.sipe.fintech.wallet.domain.PayWallet
 import tech.sipe.fintech.wallet.domain.PayWalletRepository
-import tech.sipe.fintech.wallet.presentation.CreateWalletRequest
-import java.math.BigDecimal
+import tech.sipe.fintech.wallet.presentation.request.CreateWalletRequest
+import tech.sipe.fintech.wallet.presentation.response.GetBalanceResponse
 
 @Service
 class PayWalletService(
@@ -51,12 +51,12 @@ class PayWalletService(
 		payWalletRepository.save(payWallet)
 	}
 
-	fun getBalance(payWalletId: Long): BigDecimal {
+	fun getBalance(payWalletId: Long): GetBalanceResponse {
 		/**
 		 * 1. 지갑 조회
 		 * 2. 잔액 반환
 		 */
 		val payWallet: PayWallet = payWalletRepository.findByPayWalletId(payWalletId)
-		return payWallet.balance
+		return GetBalanceResponse(payWallet.balance)
 	}
 }

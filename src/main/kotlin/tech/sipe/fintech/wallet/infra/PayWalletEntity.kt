@@ -1,4 +1,4 @@
-package tech.sipe.fintech.wallet.internal.infra
+package tech.sipe.fintech.wallet.infra
 
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType

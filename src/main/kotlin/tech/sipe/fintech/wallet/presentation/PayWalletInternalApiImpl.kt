@@ -2,8 +2,8 @@ package tech.sipe.fintech.wallet.presentation
 
 import org.springframework.stereotype.Component
 import tech.sipe.fintech.wallet.PayWalletInternalApi
+import tech.sipe.fintech.wallet.presentation.response.GetBalanceResponse
 import tech.sipe.fintech.wallet.service.PayWalletService
-import java.math.BigDecimal
 
 /**
  * @author 김재영 (jaeyeong.kim@navercorp.com)
@@ -26,5 +26,5 @@ class PayWalletInternalApiImpl(
 		payWalletService.pay(amount, payWalletId)
 	}
 
-	override fun getBalance(payWalletId: Long): BigDecimal = payWalletService.getBalance(payWalletId)
+	override fun getBalance(payWalletId: Long): GetBalanceResponse = payWalletService.getBalance(payWalletId)
 }
