@@ -1,6 +1,8 @@
 package tech.sipe.fintech.wallet.infra
 
 import org.springframework.stereotype.Component
+import tech.sipe.fintech.global.error.CustomException
+import tech.sipe.fintech.global.error.ErrorCode
 import tech.sipe.fintech.wallet.domain.PayWallet
 import tech.sipe.fintech.wallet.domain.PayWalletRepository
 import kotlin.jvm.optionals.getOrElse
@@ -12,14 +14,14 @@ class PayWalletRepositoryImpl(
 	override fun findByUserId(userId: Long): PayWallet {
 		payWalletJpaRepository.findByUserId(userId)?.let {
 			return PayWalletMapper.toDomain(it)
-		} ?: throw RuntimeException("PayWallet not found")
+		} ?: throw CustomException(ErrorCode.RESOURCE_NOT_FOUND)
 	}
 
 	override fun findByPayWalletId(payWalletId: Long): PayWallet {
 		val payWalletEntity =
 			payWalletJpaRepository
 				.findById(payWalletId)
-				.getOrElse { throw RuntimeException("PayWallet not found") }
+				.getOrElse { throw CustomException(ErrorCode.RESOURCE_NOT_FOUND) }
 
 		return PayWalletMapper.toDomain(payWalletEntity)
 	}
