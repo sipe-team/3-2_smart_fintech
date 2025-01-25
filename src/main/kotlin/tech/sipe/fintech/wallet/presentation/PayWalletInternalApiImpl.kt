@@ -9,13 +9,6 @@ import tech.sipe.fintech.wallet.service.PayWalletService
 class PayWalletInternalApiImpl(
 	private val payWalletService: PayWalletService,
 ) : PayWalletInternalApi {
-	override fun charge(
-		amount: Long,
-		payWalletId: Long,
-	) {
-		payWalletService.charge(amount, payWalletId)
-	}
-
 	override fun pay(
 		amount: Long,
 		payWalletId: Long,
