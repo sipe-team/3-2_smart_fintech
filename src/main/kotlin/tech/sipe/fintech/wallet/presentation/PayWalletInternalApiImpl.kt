@@ -5,9 +5,6 @@ import tech.sipe.fintech.wallet.PayWalletInternalApi
 import tech.sipe.fintech.wallet.presentation.response.GetBalanceResponse
 import tech.sipe.fintech.wallet.service.PayWalletService
 
-/**
- * @author 김재영 (jaeyeong.kim@navercorp.com)
- */
 @Component
 class PayWalletInternalApiImpl(
 	private val payWalletService: PayWalletService,
