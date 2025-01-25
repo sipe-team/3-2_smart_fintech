@@ -17,7 +17,7 @@ class PayWalletService(
 		 * 1. 지갑 생성
 		 * 2. 지갑 저장
 		 */
-		val payWallet: PayWallet = PayWallet.create(createWalletRequest.userId)
+		val payWallet: PayWallet = PayWallet.initialize(createWalletRequest.userId)
 		payWalletRepository.save(payWallet)
 	}
 

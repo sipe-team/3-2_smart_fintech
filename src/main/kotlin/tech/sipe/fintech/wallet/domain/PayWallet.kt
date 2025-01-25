@@ -14,7 +14,7 @@ class PayWallet(
 	companion object {
 		private const val MINIMUM_CHARGE_AMOUNT = 1000
 
-		fun create(userId: Long): PayWallet =
+		fun initialize(userId: Long): PayWallet =
 			PayWallet(
 				id = 0L,
 				userId = userId,
