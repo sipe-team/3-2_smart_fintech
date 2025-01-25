@@ -1,4 +1,4 @@
-package tech.sipe.fintech.wallet.internal.domain
+package tech.sipe.fintech.common
 
 /**
  * @author 김재영 (jaeyeong.kim@navercorp.com)
