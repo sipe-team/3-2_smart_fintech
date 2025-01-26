@@ -18,16 +18,6 @@ class AccountService(
 	}
 
 	@Transactional
-	fun link() {
-		/**
-		 *  1. 지갑 조회
-		 *  2. 계좌 생성
-		 *  3. 계좌에 지갑 정보 저장
-		 *  4. 계좌 저장
-		 */
-	}
-
-	@Transactional
 	fun unlink(accountId: Long) {
 		/**
 		 *  1. 계좌 조회
