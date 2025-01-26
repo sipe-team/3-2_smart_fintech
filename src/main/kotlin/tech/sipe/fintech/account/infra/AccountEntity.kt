@@ -12,6 +12,7 @@ import java.math.BigDecimal
 @Entity
 @Table(name = "account")
 class AccountEntity(
+	val userId: Long,
 	@Enumerated(value = EnumType.STRING)
 	val bankName: BankName,
 	val iban: Long,
