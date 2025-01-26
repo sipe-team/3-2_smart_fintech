@@ -1,6 +1,6 @@
 package tech.sipe.fintech.account.domain
 
-import tech.sipe.fintech.wallet.internal.domain.Currency
+import tech.sipe.fintech.common.Currency
 import java.math.BigDecimal
 
 class Account(
