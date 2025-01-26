@@ -25,7 +25,7 @@ class PaymentService(
 		// 2. 결제 처리
 		val payment =
 			Payment(
-				id = 0L,
+				paymentId = 0L,
 				paymentRequestUserId = paymentRequest.paymentRequestUserId,
 				paymentResponseUserId = paymentRequest.paymentResponseUserId,
 				money = paymentRequest.money,

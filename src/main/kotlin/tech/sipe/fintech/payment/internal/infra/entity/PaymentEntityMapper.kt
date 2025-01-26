@@ -16,7 +16,7 @@ object PaymentEntityMapper {
 
 	fun toDomain(paymentEntity: PaymentEntity): Payment =
 		Payment(
-			id = paymentEntity.id ?: 0L,
+			paymentId = paymentEntity.id ?: 0L,
 			paymentRequestUserId = paymentEntity.paymentRequestUserId,
 			paymentResponseUserId = paymentEntity.paymentResponseUserId,
 			money = paymentEntity.money ?: BigDecimal.ZERO,

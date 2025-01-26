@@ -3,8 +3,8 @@ package tech.sipe.fintech.payment.internal.domain
 import tech.sipe.fintech.common.Currency
 import java.math.BigDecimal
 
-class Payment(
-	val id: Long,
+data class Payment(
+	val paymentId: Long,
 	val paymentRequestUserId: Long,
 	val paymentResponseUserId: Long,
 	val money: BigDecimal,
