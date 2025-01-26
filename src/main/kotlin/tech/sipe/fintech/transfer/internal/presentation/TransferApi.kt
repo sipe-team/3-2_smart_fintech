@@ -5,19 +5,19 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import tech.sipe.fintech.transfer.internal.domain.TransferService
-import tech.sipe.fintech.wallet.PayWalletApi
+import tech.sipe.fintech.wallet.PayWalletInternalApi
 
 @RestController
 @RequestMapping("/transfer")
 class TransferApi(
 	private val transferService: TransferService,
-	private val payWalletApi: PayWalletApi,
+	private val payWalletInternalApi: PayWalletInternalApi,
 ) {
 	@PostMapping("/charge")
 	fun charge(
 		@RequestParam memberId: Long,
 	) {
-		val balance = payWalletApi.getBalance(123)
+		val balance = payWalletInternalApi.getBalance(123)
 		transferService.charge()
 	}
 
