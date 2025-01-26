@@ -2,6 +2,7 @@ package tech.sipe.fintech.external.service
 
 import org.springframework.stereotype.Component
 import tech.sipe.fintech.external.ExternalTransferApi
+import tech.sipe.fintech.transfer.internal.domain.Transfer
 import tech.sipe.fintech.transfer.internal.domain.TransferService
 
 @Component
@@ -12,11 +13,10 @@ class ExternalTransferApiImpl(
 		sourceAccountNumber: String,
 		destinationAccountNumber: String,
 		amount: Long,
-	) {
+	): Transfer =
 		transferService.transfer(
 			sourceAccountNumber,
 			destinationAccountNumber,
 			amount,
 		)
-	}
 }

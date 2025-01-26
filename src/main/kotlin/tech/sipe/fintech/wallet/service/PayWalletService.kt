@@ -112,12 +112,13 @@ class PayWalletService(
 		payWalletRepository.save(destinationPayWallet)
 
 		// transfer 이력 저장
-		externalTransferApi.transfer(
-			sourceAccountNumber = sourcePayWallet.accountId.toString(),
-			destinationAccountNumber = destinationPayWallet.accountId.toString(),
-			amount = amount,
-		)
+		val transfer =
+			externalTransferApi.transfer(
+				sourceAccountNumber = sourcePayWallet.accountId.toString(),
+				destinationAccountNumber = destinationPayWallet.accountId.toString(),
+				amount = amount,
+			)
 
-		eventPublisher.publishEvent(PayWalletTransferredEvent())
+		eventPublisher.publishEvent(PayWalletTransferredEvent(transfer.transferId!!))
 	}
 }
