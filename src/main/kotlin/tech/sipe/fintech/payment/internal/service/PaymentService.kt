@@ -35,6 +35,12 @@ class PaymentService(
 			)
 
 		val savedPayment = paymentRepository.save(payment)
+
+		/**
+		 * Todo
+		 * 	사용자 -> 사장님 송금 api를 호출하는 로직 구현 필요
+		 */
+
 		return PaymentResponse.from(savedPayment)
 	}
 }
