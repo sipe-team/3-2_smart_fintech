@@ -1,4 +1,4 @@
-package tech.sipe.fintech.wallet.internal.domain
+package tech.sipe.fintech.wallet.domain
 
 import tech.sipe.fintech.common.Currency
 import java.math.BigDecimal
@@ -6,13 +6,23 @@ import java.math.BigDecimal
 class PayWallet(
 	val id: Long,
 	val userId: Long,
-	val accountId: Long,
+	val accountId: Long?,
 	val walletStatus: WalletStatus,
 	balance: BigDecimal,
 	val currency: Currency,
 ) {
 	companion object {
 		private const val MINIMUM_CHARGE_AMOUNT = 1000
+
+		fun initialize(userId: Long): PayWallet =
+			PayWallet(
+				id = 0L,
+				userId = userId,
+				accountId = null,
+				walletStatus = WalletStatus.INACTIVE,
+				balance = BigDecimal.ZERO,
+				currency = Currency.KRW,
+			)
 	}
 
 	var balance: BigDecimal = balance

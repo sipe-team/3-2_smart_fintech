@@ -1,7 +1,7 @@
-package tech.sipe.fintech.wallet.internal.domain
+package tech.sipe.fintech.wallet.infra
 
 import org.springframework.dao.DataIntegrityViolationException
-import tech.sipe.fintech.wallet.internal.infra.PayWalletEntity
+import tech.sipe.fintech.wallet.domain.PayWallet
 
 class PayWalletMapper {
 	companion object {
