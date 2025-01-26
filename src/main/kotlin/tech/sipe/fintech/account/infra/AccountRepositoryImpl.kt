@@ -18,6 +18,15 @@ class AccountRepositoryImpl(
 		return AccountMapper.toDomain(accountEntity)
 	}
 
+	override fun findByUserId(userId: Long): Account {
+		val accountEntity =
+			accountJpaRepository
+				.findByUserId(userId)
+				.getOrElse { throw RuntimeException("Account not found") }
+
+		return AccountMapper.toDomain(accountEntity)
+	}
+
 	override fun save(account: Account): Account =
 		AccountMapper.toDomain(accountJpaRepository.save(AccountMapper.toEntity(account)))
 

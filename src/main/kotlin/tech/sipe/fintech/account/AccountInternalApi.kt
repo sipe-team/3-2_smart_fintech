@@ -1,11 +1,14 @@
 package tech.sipe.fintech.account
 
+import tech.sipe.fintech.account.presentation.response.GetAccountResponse
 import java.math.BigDecimal
 
 interface AccountInternalApi {
 	fun delete(accountId: Long)
 
 	fun getBalance(accountId: Long): BigDecimal
+
+	fun getAccountByUserId(userId: Long): GetAccountResponse
 
 	fun deposit(
 		accountId: Long,

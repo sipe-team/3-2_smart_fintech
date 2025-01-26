@@ -2,6 +2,7 @@ package tech.sipe.fintech.account.presentation
 
 import org.springframework.stereotype.Service
 import tech.sipe.fintech.account.AccountInternalApi
+import tech.sipe.fintech.account.presentation.response.GetAccountResponse
 import tech.sipe.fintech.account.service.AccountService
 import java.math.BigDecimal
 
@@ -14,6 +15,8 @@ class AccountInternalApiImpl(
 	}
 
 	override fun getBalance(accountId: Long): BigDecimal = accountService.getBalance(accountId)
+
+	override fun getAccountByUserId(userId: Long): GetAccountResponse = accountService.getAccountByUserId(userId)
 
 	override fun deposit(
 		accountId: Long,

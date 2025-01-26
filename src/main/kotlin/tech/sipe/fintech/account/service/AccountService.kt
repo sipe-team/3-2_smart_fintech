@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service
 import tech.sipe.fintech.account.domain.Account
 import tech.sipe.fintech.account.domain.AccountRepository
 import tech.sipe.fintech.account.presentation.request.CreateAccountRequest
+import tech.sipe.fintech.account.presentation.response.GetAccountResponse
 import java.math.BigDecimal
 
 @Service
@@ -35,6 +36,12 @@ class AccountService(
 		 */
 		val account: Account = accountRepository.findByAccountId(accountId)
 		return account.balance
+	}
+
+	@Transactional
+	fun getAccountByUserId(userId: Long): GetAccountResponse {
+		val account = accountRepository.findByUserId(userId)
+		return GetAccountResponse(account.iban)
 	}
 
 	@Transactional
