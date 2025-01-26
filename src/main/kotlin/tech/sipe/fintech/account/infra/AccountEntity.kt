@@ -6,7 +6,7 @@ import jakarta.persistence.Enumerated
 import jakarta.persistence.Table
 import tech.sipe.fintech.account.domain.BankName
 import tech.sipe.fintech.common.BaseEntity
-import tech.sipe.fintech.wallet.internal.domain.Currency
+import tech.sipe.fintech.common.Currency
 import java.math.BigDecimal
 
 @Entity

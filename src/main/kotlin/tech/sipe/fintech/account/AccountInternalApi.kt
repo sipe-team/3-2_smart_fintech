@@ -3,9 +3,7 @@ package tech.sipe.fintech.account
 import java.math.BigDecimal
 
 interface AccountInternalApi {
-	fun link(payWalletId: Long)
-
-	fun unlink(accountId: Long)
+	fun delete(accountId: Long)
 
 	fun getBalance(accountId: Long): BigDecimal
 

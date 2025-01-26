@@ -9,11 +9,8 @@ import java.math.BigDecimal
 class AccountInternalApiImpl(
 	private val accountService: AccountService,
 ) : AccountInternalApi {
-	override fun link(payWalletId: Long) {
-	}
-
-	override fun unlink(accountId: Long) {
-		accountService.unlink(accountId)
+	override fun delete(accountId: Long) {
+		accountService.delete(accountId)
 	}
 
 	override fun getBalance(accountId: Long): BigDecimal = accountService.getBalance(accountId)

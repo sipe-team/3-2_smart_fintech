@@ -18,7 +18,7 @@ class AccountService(
 	}
 
 	@Transactional
-	fun unlink(accountId: Long) {
+	fun delete(accountId: Long) {
 		/**
 		 *  1. 계좌 조회
 		 *  2. 계좌 soft delete
