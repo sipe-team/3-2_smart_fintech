@@ -3,6 +3,8 @@ package tech.sipe.fintech.account.infra
 import org.springframework.stereotype.Component
 import tech.sipe.fintech.account.domain.Account
 import tech.sipe.fintech.account.domain.AccountRepository
+import tech.sipe.fintech.global.error.CustomException
+import tech.sipe.fintech.global.error.ErrorCode
 import kotlin.jvm.optionals.getOrElse
 
 @Component
@@ -13,7 +15,7 @@ class AccountRepositoryImpl(
 		val accountEntity =
 			accountJpaRepository
 				.findById(accountId)
-				.getOrElse { throw RuntimeException("Account not found") }
+				.getOrElse { throw CustomException(ErrorCode.RESOURCE_NOT_FOUND) }
 
 		return AccountMapper.toDomain(accountEntity)
 	}
@@ -22,7 +24,7 @@ class AccountRepositoryImpl(
 		val accountEntity =
 			accountJpaRepository
 				.findByUserId(userId)
-				.getOrElse { throw RuntimeException("Account not found") }
+				.getOrElse { throw CustomException(ErrorCode.RESOURCE_NOT_FOUND) }
 
 		return AccountMapper.toDomain(accountEntity)
 	}
@@ -34,7 +36,7 @@ class AccountRepositoryImpl(
 		val accountEntity =
 			accountJpaRepository
 				.findById(accountId)
-				.getOrElse { throw RuntimeException("Account not found") }
+				.getOrElse { throw CustomException(ErrorCode.RESOURCE_NOT_FOUND) }
 
 		accountEntity.softDelete()
 	}

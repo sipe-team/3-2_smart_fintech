@@ -15,4 +15,7 @@ enum class ErrorCode(
 
 	// Resource
 	RESOURCE_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 리소스를 찾을 수 없습니다."),
+
+	// Out of range
+	INSUFFICIENT_BALANCE(HttpStatus.BAD_REQUEST, message = "잔액이 부족합니다."),
 }

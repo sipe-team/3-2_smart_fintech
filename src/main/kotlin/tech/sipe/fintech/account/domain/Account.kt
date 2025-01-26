@@ -2,6 +2,8 @@ package tech.sipe.fintech.account.domain
 
 import tech.sipe.fintech.account.presentation.request.CreateAccountRequest
 import tech.sipe.fintech.common.Currency
+import tech.sipe.fintech.global.error.CustomException
+import tech.sipe.fintech.global.error.ErrorCode
 import java.math.BigDecimal
 
 class Account(
@@ -41,7 +43,7 @@ class Account(
 	 */
 	fun withdraw(amount: Long) {
 		if (balance - BigDecimal.valueOf(amount) < BigDecimal.ZERO) {
-			throw IllegalArgumentException("잔액이 부족합니다.")
+			throw CustomException(ErrorCode.INSUFFICIENT_BALANCE)
 		}
 		balance -= BigDecimal.valueOf(amount)
 	}
