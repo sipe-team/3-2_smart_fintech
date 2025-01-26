@@ -12,7 +12,7 @@ import tech.sipe.fintech.wallet.PayWalletInternalApi
 @Service
 class PaymentService(
 	private val paymentRepository: PaymentRepository,
-	private val payWalletInternalApi: PayWalletInternalApi, // 해당 클래스가 있다고 가정
+	private val payWalletInternalApi: PayWalletInternalApi, // 지갑 모듈에 있는 api 연동
 ) {
 	@Transactional
 	fun processPayment(paymentRequest: PaymentRequest): PaymentResponse {
