@@ -1,14 +1,14 @@
 package tech.sipe.fintech.account.presentation
 
 import org.springframework.stereotype.Service
-import tech.sipe.fintech.account.AccountApi
+import tech.sipe.fintech.account.AccountInternalApi
 import tech.sipe.fintech.account.service.AccountService
 import java.math.BigDecimal
 
 @Service
-class AccountApiImpl(
+class AccountInternalApiImpl(
 	private val accountService: AccountService,
-) : AccountApi {
+) : AccountInternalApi {
 	override fun link(payWalletId: Long) {
 	}
 

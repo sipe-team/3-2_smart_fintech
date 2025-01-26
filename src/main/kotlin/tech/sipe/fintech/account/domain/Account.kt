@@ -1,17 +1,31 @@
 package tech.sipe.fintech.account.domain
 
+import tech.sipe.fintech.account.presentation.request.CreateAccountRequest
 import tech.sipe.fintech.common.Currency
 import java.math.BigDecimal
 
 class Account(
 	val id: Long,
-	val payWalletId: Long,
+	val payWalletId: Long?,
 	val bankName: BankName,
 	val iban: Long,
 	val accountHolderName: String,
 	val currency: Currency,
 	balance: BigDecimal,
 ) {
+	companion object {
+		fun initialize(createAccountRequest: CreateAccountRequest): Account =
+			Account(
+				id = 0L,
+				payWalletId = null,
+				bankName = createAccountRequest.bankName,
+				iban = createAccountRequest.iban,
+				accountHolderName = createAccountRequest.accountHolderName,
+				currency = Currency.KRW,
+				balance = BigDecimal.ZERO,
+			)
+	}
+
 	var balance: BigDecimal = balance
 		private set
 

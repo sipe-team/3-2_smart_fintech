@@ -4,12 +4,19 @@ import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 import tech.sipe.fintech.account.domain.Account
 import tech.sipe.fintech.account.domain.AccountRepository
+import tech.sipe.fintech.account.presentation.request.CreateAccountRequest
 import java.math.BigDecimal
 
 @Service
 class AccountService(
 	private val accountRepository: AccountRepository,
 ) {
+	@Transactional
+	fun create(createAccountRequest: CreateAccountRequest) {
+		val account: Account = Account.initialize(createAccountRequest)
+		accountRepository.save(account)
+	}
+
 	@Transactional
 	fun link() {
 		/**

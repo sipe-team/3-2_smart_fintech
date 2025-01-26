@@ -2,7 +2,7 @@ package tech.sipe.fintech.account
 
 import java.math.BigDecimal
 
-interface AccountApi {
+interface AccountInternalApi {
 	fun link(payWalletId: Long)
 
 	fun unlink(accountId: Long)
