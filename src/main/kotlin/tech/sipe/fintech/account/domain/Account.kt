@@ -6,7 +6,6 @@ import java.math.BigDecimal
 
 class Account(
 	val id: Long,
-	val payWalletId: Long?,
 	val bankName: BankName,
 	val iban: Long,
 	val accountHolderName: String,
@@ -17,7 +16,6 @@ class Account(
 		fun initialize(createAccountRequest: CreateAccountRequest): Account =
 			Account(
 				id = 0L,
-				payWalletId = null,
 				bankName = createAccountRequest.bankName,
 				iban = createAccountRequest.iban,
 				accountHolderName = createAccountRequest.accountHolderName,

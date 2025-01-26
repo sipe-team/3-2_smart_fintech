@@ -4,6 +4,6 @@ import org.springframework.modulith.ApplicationModule
 
 @ApplicationModule(
 	type = ApplicationModule.Type.CLOSED,
-	allowedDependencies = ["wallet"],
+	allowedDependencies = [],
 )
 class AccountModuleMetadata
