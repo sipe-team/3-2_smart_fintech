@@ -111,28 +111,6 @@ class PayWalletService(
 		payWalletRepository.save(sourcePayWallet)
 		payWalletRepository.save(destinationPayWallet)
 
-		eventPublisher.publishEvent(PayWalletTransferredEvent())
-	}
-
-	// 지갑 to 지갑
-	@Transactional
-	fun transferWallet(
-		sourcePayWalletId: Long,
-		destinationPayWalletId: Long,
-		amount: Long,
-	) {
-		// source, destination 지갑 조회
-		val sourcePayWallet: PayWallet = payWalletRepository.findByPayWalletId(sourcePayWalletId)
-		val destinationPayWallet: PayWallet = payWalletRepository.findByPayWalletId(destinationPayWalletId)
-
-		// 출금, 입금
-		sourcePayWallet.withdraw(amount)
-		destinationPayWallet.charge(amount)
-
-		// transaction
-		payWalletRepository.save(sourcePayWallet)
-		payWalletRepository.save(destinationPayWallet)
-
 		// transfer 이력 저장
 		externalTransferApi.transfer(
 			sourceAccountNumber = sourcePayWallet.accountId.toString(),

@@ -2,14 +2,21 @@ package tech.sipe.fintech.external.service
 
 import org.springframework.stereotype.Component
 import tech.sipe.fintech.external.ExternalTransferApi
+import tech.sipe.fintech.transfer.internal.domain.TransferService
 
 @Component
-class ExternalTransferApiImpl : ExternalTransferApi {
+class ExternalTransferApiImpl(
+	private val transferService: TransferService,
+) : ExternalTransferApi {
 	override fun transfer(
 		sourceAccountNumber: String,
 		destinationAccountNumber: String,
 		amount: Long,
 	) {
-		TODO("Not yet implemented")
+		transferService.transfer(
+			sourceAccountNumber,
+			destinationAccountNumber,
+			amount,
+		)
 	}
 }
