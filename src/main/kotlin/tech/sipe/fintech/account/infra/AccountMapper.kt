@@ -7,7 +7,7 @@ class AccountMapper {
 	companion object {
 		fun toDomain(entity: AccountEntity): Account =
 			Account(
-				id = entity.id ?: throw DataIntegrityViolationException("Id is null"),
+				accountId = entity.id ?: throw DataIntegrityViolationException("Id is null"),
 				userId = entity.userId,
 				bankName = entity.bankName,
 				iban = entity.iban,

@@ -7,7 +7,7 @@ import tech.sipe.fintech.global.error.ErrorCode
 import java.math.BigDecimal
 
 class Account(
-	val id: Long,
+	val accountId: Long,
 	val userId: Long,
 	val bankName: BankName,
 	val iban: Long,
@@ -18,7 +18,7 @@ class Account(
 	companion object {
 		fun initialize(createAccountRequest: CreateAccountRequest): Account =
 			Account(
-				id = 0L,
+				accountId = 0L,
 				userId = createAccountRequest.userId,
 				bankName = createAccountRequest.bankName,
 				iban = createAccountRequest.iban,
