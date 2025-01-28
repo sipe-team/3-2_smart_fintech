@@ -10,7 +10,7 @@ import tech.sipe.fintech.common.Currency
 import java.math.BigDecimal
 
 @Entity
-@Table(name = "account")
+@Table(name = "accounts")
 class AccountEntity(
 	val userId: Long,
 	@Enumerated(value = EnumType.STRING)
