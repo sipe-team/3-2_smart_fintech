@@ -10,7 +10,7 @@ import java.math.BigDecimal
 class AccountInternalApiImpl(
 	private val accountService: AccountService,
 ) : AccountInternalApi {
-	override fun delete(accountId: Long) {
+	override fun deleteAccount(accountId: Long) {
 		accountService.delete(accountId)
 	}
 

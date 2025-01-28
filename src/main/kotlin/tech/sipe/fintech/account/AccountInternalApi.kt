@@ -4,7 +4,7 @@ import tech.sipe.fintech.account.presentation.response.GetAccountResponse
 import java.math.BigDecimal
 
 interface AccountInternalApi {
-	fun delete(accountId: Long)
+	fun deleteAccount(accountId: Long)
 
 	fun getBalance(accountId: Long): BigDecimal
 

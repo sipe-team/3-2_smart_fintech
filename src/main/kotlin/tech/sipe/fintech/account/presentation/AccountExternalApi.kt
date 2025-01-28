@@ -15,7 +15,7 @@ class AccountExternalApi(
 	private val accountService: AccountService,
 ) {
 	@PostMapping
-	fun create(
+	fun createAccount(
 		@RequestBody createAccountRequest: CreateAccountRequest,
 	): ResponseEntity<Void> {
 		accountService.create(createAccountRequest)
