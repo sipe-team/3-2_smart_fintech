@@ -34,6 +34,7 @@ class Account(
 	/**
 	 * 입금
 	 */
+	@Synchronized
 	fun deposit(amount: Long) {
 		balance += BigDecimal.valueOf(amount)
 	}
@@ -41,6 +42,7 @@ class Account(
 	/**
 	 * 출금
 	 */
+	@Synchronized
 	fun withdraw(amount: Long) {
 		if (balance - BigDecimal.valueOf(amount) < BigDecimal.ZERO) {
 			throw CustomException(ErrorCode.INSUFFICIENT_BALANCE)
