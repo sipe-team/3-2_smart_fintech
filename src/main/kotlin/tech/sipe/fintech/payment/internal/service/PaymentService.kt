@@ -1,8 +1,10 @@
 package tech.sipe.fintech.payment.internal.service
 
+import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import tech.sipe.fintech.payment.internal.domain.Payment
+import tech.sipe.fintech.payment.internal.domain.PaymentCompletedEvent
 import tech.sipe.fintech.payment.internal.domain.PaymentRepository
 import tech.sipe.fintech.payment.internal.domain.PaymentStatus
 import tech.sipe.fintech.payment.internal.presentation.dto.PaymentRequest
@@ -13,16 +15,17 @@ import tech.sipe.fintech.wallet.PayWalletInternalApi
 class PaymentService(
 	private val paymentRepository: PaymentRepository,
 	private val payWalletInternalApi: PayWalletInternalApi, // 지갑 모듈에 있는 api 연동
+	private val eventPublisher: ApplicationEventPublisher,
 ) {
 	@Transactional
 	fun processPayment(paymentRequest: PaymentRequest): PaymentResponse {
 		// 1. 지갑 잔액 조회 & 지갑 잔액 차감
-		payWalletInternalApi.pay(
-			paymentRequest.paymentRequestUserId,
-			paymentRequest.money.toLong(),
+		payWalletInternalApi.debit(
+			userId = paymentRequest.paymentRequestUserId,
+			amount = paymentRequest.money.toLong(),
 		)
 
-		// 2. 결제 처리
+		// 2. 결제 이력 저장
 		val payment =
 			Payment(
 				paymentId = 0L,
@@ -36,11 +39,19 @@ class PaymentService(
 
 		val savedPayment = paymentRepository.save(payment)
 
-		/**
-		 * Todo
-		 * 	사용자 -> 사장님 송금 api를 호출하는 로직 구현 필요
-		 */
+		eventPublisher.publishEvent(PaymentCompletedEvent(paymentId = savedPayment.paymentId, amount = paymentRequest.money))
 
 		return PaymentResponse.from(savedPayment)
+	}
+
+	@Transactional
+	fun compensatePayment(paymentId: Long) {
+		val payment = paymentRepository.findByPaymentId(paymentId)
+		payWalletInternalApi.charge(
+			userId = payment.paymentRequestUserId,
+			amount = payment.money.toLong(),
+		)
+		payment.failed()
+		paymentRepository.save(payment)
 	}
 }

@@ -12,7 +12,7 @@ import tech.sipe.fintech.payment.internal.service.PaymentService
 
 @RestController
 @RequestMapping("/payment")
-class PaymentApi(
+class PaymentExternalApi(
 	private val paymentService: PaymentService,
 ) {
 	@PostMapping("/request")

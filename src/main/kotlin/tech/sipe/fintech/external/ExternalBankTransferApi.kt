@@ -1,6 +1,6 @@
 package tech.sipe.fintech.external
 
-interface ExternalTransferApi {
+interface ExternalBankTransferApi {
 	/**
 	 * 계좌간 이체
 	 */
@@ -8,5 +8,5 @@ interface ExternalTransferApi {
 		sourceAccountNumber: String,
 		destinationAccountNumber: String,
 		amount: Long,
-	)
+	): ExternalBankTransferResult
 }

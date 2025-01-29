@@ -32,7 +32,9 @@ spring_doc_openapi_starter_webmvc_ui = { group = "org.springdoc", name = "spring
 
 # Spring Modulith Libraries
 spring_modulith_events_api = { group = "org.springframework.modulith", name = "spring-modulith-events-api", version.ref = "spring_modulith" }
+spring_modulith_events_core = { group = "org.springframework.modulith", name = "spring-modulith-events-core", version.ref = "spring_modulith" }
 spring_modulith_starter_core = { group = "org.springframework.modulith", name = "spring-modulith-starter-core", version.ref = "spring_modulith" }
+spring_modulith_starter_jpa = { group = "org.springframework.modulith", name = "spring-modulith-starter-jpa", version.ref = "spring_modulith" }
 spring_modulith_starter_jdbc = { group = "org.springframework.modulith", name = "spring-modulith-starter-jdbc", version.ref = "spring_modulith" }
 spring_modulith_test = { group = "org.springframework.modulith", name = "spring-modulith-test", version.ref = "spring_modulith" }
 spring_modulith_docs = { group = "org.springframework.modulith", name = "spring-modulith-docs", version.ref = "spring_modulith" }
@@ -58,8 +60,9 @@ junit_platform = { group = "org.junit.platform", name = "junit-platform-launcher
 [bundles]
 spring_modulith = [
     "spring_modulith_events_api",
+    "spring_modulith_events_core",
     "spring_modulith_starter_core",
-    "spring_modulith_starter_jdbc",
+    "spring_modulith_starter_jpa",
     "spring_modulith_test",
     "spring_modulith_docs"
 ]
