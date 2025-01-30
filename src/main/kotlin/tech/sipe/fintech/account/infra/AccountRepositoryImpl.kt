@@ -15,7 +15,7 @@ class AccountRepositoryImpl(
 		val accountEntity =
 			accountJpaRepository
 				.findById(accountId)
-				.getOrElse { throw CustomException(ErrorCode.RESOURCE_NOT_FOUND) }
+				.getOrElse { throw CustomException(ErrorCode.ACCOUNT_NOT_FOUND) }
 
 		return AccountMapper.toDomain(accountEntity)
 	}
@@ -24,7 +24,7 @@ class AccountRepositoryImpl(
 		val accountEntity =
 			accountJpaRepository
 				.findByUserId(userId)
-				.getOrElse { throw CustomException(ErrorCode.RESOURCE_NOT_FOUND) }
+				.getOrElse { throw CustomException(ErrorCode.ACCOUNT_NOT_FOUND) }
 
 		return AccountMapper.toDomain(accountEntity)
 	}
@@ -36,7 +36,7 @@ class AccountRepositoryImpl(
 		val accountEntity =
 			accountJpaRepository
 				.findById(accountId)
-				.getOrElse { throw CustomException(ErrorCode.RESOURCE_NOT_FOUND) }
+				.getOrElse { throw CustomException(ErrorCode.ACCOUNT_NOT_FOUND) }
 
 		accountEntity.softDelete()
 	}

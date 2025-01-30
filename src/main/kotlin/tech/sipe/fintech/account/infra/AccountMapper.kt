@@ -8,7 +8,7 @@ class AccountMapper {
 	companion object {
 		fun toDomain(entity: AccountEntity): Account =
 			Account(
-				accountId = entity.id ?: throw CustomException(ErrorCode.ENTITY_ID_NULL),
+				accountId = entity.id ?: throw CustomException(ErrorCode.ACCOUNT_ENTITY_ID_NULL),
 				userId = entity.userId,
 				bankName = entity.bankName,
 				iban = entity.iban,
