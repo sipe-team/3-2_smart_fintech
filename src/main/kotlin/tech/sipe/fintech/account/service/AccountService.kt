@@ -1,7 +1,7 @@
 package tech.sipe.fintech.account.service
 
-import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import tech.sipe.fintech.account.domain.Account
 import tech.sipe.fintech.account.domain.AccountRepository
 import tech.sipe.fintech.account.presentation.request.CreateAccountRequest
@@ -28,7 +28,7 @@ class AccountService(
 		accountRepository.delete(accountId)
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	fun getBalance(accountId: Long): BigDecimal {
 		/**
 		 * 1. 계좌 조회
@@ -38,7 +38,7 @@ class AccountService(
 		return account.balance
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	fun getAccountByUserId(userId: Long): GetAccountResponse {
 		val account = accountRepository.findByUserId(userId)
 		return GetAccountResponse(account.iban)
