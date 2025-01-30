@@ -13,6 +13,10 @@ enum class ErrorCode(
 	METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED, "지원하지 않는 HTTP method 입니다."),
 	INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버 오류, 관리자에게 문의하세요"),
 
-	// Resource
-	RESOURCE_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 리소스를 찾을 수 없습니다."),
+	// Account
+	ACCOUNT_NOT_FOUND(HttpStatus.NOT_FOUND, "Account를 찾을 수 없습니다."),
+	ACCOUNT_ENTITY_ID_NULL(HttpStatus.UNPROCESSABLE_ENTITY, message = "Account ID가 존재하지 않아 처리할 수 없습니다."),
+
+	// Balance Out of range
+	INSUFFICIENT_BALANCE(HttpStatus.BAD_REQUEST, message = "잔액이 부족합니다."),
 }
