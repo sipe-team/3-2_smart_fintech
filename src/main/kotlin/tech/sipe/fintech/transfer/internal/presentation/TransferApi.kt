@@ -30,6 +30,5 @@ class TransferApi(
 	fun transfer(
 		@RequestParam memberId: Long,
 	) {
-		transferService.transfer()
 	}
 }

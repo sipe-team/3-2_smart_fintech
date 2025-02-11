@@ -31,7 +31,12 @@ abstract class BaseEntity {
 	var deletedAt: LocalDateTime? = null
 		protected set
 
+	@Column
+	var deleted: Boolean? = false
+		protected set
+
 	fun softDelete() {
 		this.deletedAt = LocalDateTime.now()
+		this.deleted = true
 	}
 }
