@@ -41,7 +41,7 @@ class PayWallet(
 	/**
 	 * 차감
 	 */
-	fun withdraw(amount: Long) {
+	fun debit(amount: Long) {
 		if (balance - BigDecimal.valueOf(amount) < BigDecimal.ZERO) {
 			throw IllegalArgumentException("잔액이 부족합니다.")
 		}

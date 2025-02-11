@@ -3,8 +3,7 @@ package tech.sipe.fintech.wallet.service
 import jakarta.transaction.Transactional
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
-import tech.sipe.fintech.account.Account
-import tech.sipe.fintech.external.ExternalTransferApi
+import tech.sipe.fintech.external.ExternalBankTransferApi
 import tech.sipe.fintech.wallet.domain.*
 import tech.sipe.fintech.wallet.presentation.request.CreateWalletRequest
 import tech.sipe.fintech.wallet.presentation.response.GetBalanceResponse
@@ -12,7 +11,7 @@ import tech.sipe.fintech.wallet.presentation.response.GetBalanceResponse
 @Service
 class PayWalletService(
 	private val payWalletRepository: PayWalletRepository,
-	private val externalTransferApi: ExternalTransferApi,
+	private val externalTransferApi: ExternalBankTransferApi,
 	private val eventPublisher: ApplicationEventPublisher,
 ) {
 	@Transactional
